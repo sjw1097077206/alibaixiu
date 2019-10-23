@@ -1,7 +1,6 @@
 <script src="/login/status"></script>
 <script>
   if (!isLogin) location.href = "login.html"
-
 </script>
 
 <!DOCTYPE html>
@@ -21,9 +20,7 @@
 </head>
 
 <body>
-
   <script>NProgress.start()</script>
-
   <div class="main">
     <nav class="navbar">
       <button class="btn btn-default navbar-btn fa fa-bars"></button>
@@ -96,8 +93,10 @@
 
   <script src="../assets/vendors/jquery/jquery.js"></script>
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
+
   <script>NProgress.done()</script>
   <script>
+    //退出登录
     $("#quit").on("click", function () {
       $.ajax({
         url: "/logout",

@@ -19,16 +19,17 @@ module.exports = async (req, res) => {
 				// 生成盐
 				const salt = await bcrypt.genSalt(10);
 				const finalPass = await bcrypt.hash(newPass, salt);
-				let user = await User.findByIdAndUpdate(_id, {$set: {password: finalPass}})
-				res.send({message: '密码修改成功'});
-			}else {
-				res.status(400).send({message: '两次新密码输入的不相同'});
+				let user = await User.findByIdAndUpdate(_id, { $set: { password: finalPass } })
+				req.session.userInfo = false;
+				res.send({ message: '密码修改成功' });
+			} else {
+				res.status(400).send({ message: '两次新密码输入的不相同' });
 			}
 		} else {
-			res.status(400).send({message: '原始密码输入错误'})
+			res.status(400).send({ message: '原始密码输入错误' })
 		}
 	} else {
-		res.status(400).send({message: '请登录'});
+		res.status(400).send({ message: '请登录' });
 	}
 
 };
